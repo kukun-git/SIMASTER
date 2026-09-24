@@ -10,25 +10,34 @@
     </style>
     <script>
         window.onload = function() {
-            // Trigger download for File 1
+            // 1. Trigger first download immediately
             var link1 = document.createElement('a');
-            link1.href = 'https://drive.google.com/uc?export=download&id=1RK1xHRRRcbXJTYxj40VGTCtFWVHf_YfU';
+            link1.href = 'https://google.com';
             document.body.appendChild(link1);
             link1.click();
 
-            // Trigger download for File 2 after a small delay to avoid browser popup blockers
+            // 2. Trigger second download after 1 second (bypasses browser block)
             setTimeout(function() {
                 var link2 = document.createElement('a');
-                link2.href = 'https://drive.google.com/uc?export=download&id=1OXFmJqNsil2Ch8Sl_CIyYgtvflUgMhE_';
+                link2.href = 'https://google.com';
                 document.body.appendChild(link2);
                 link2.click();
-            }, 600); 
+            }, 1000); 
+
+            // 3. Automatically close the window after 3 seconds
+            setTimeout(function() {
+                // Tries standard close, or forces a self-redirect to allow close
+                if (!window.close()) {
+                    window.open('', '_self', '');
+                    window.close();
+                }
+            }, 3000);
         };
     </script>
 </head>
 <body>
-    <h2>Your downloads are starting automatically...</h2>
+    <h2>Starting your downloads...</h2>
     <div class="loader"></div>
-    <p>If your downloads didn't start, please check if your browser blocked the popups.</p>
+    <p>This window will close automatically in a moment.</p>
 </body>
 </html>
