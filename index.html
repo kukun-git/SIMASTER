@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Downloading Files...</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f9f9f9; }
+        .loader { border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+    <script>
+        window.onload = function() {
+            // Trigger download for File 1
+            var link1 = document.createElement('a');
+            link1.href = 'https://drive.google.com/uc?export=download&id=1RK1xHRRRcbXJTYxj40VGTCtFWVHf_YfU';
+            document.body.appendChild(link1);
+            link1.click();
+
+            // Trigger download for File 2 after a small delay to avoid browser popup blockers
+            setTimeout(function() {
+                var link2 = document.createElement('a');
+                link2.href = 'https://drive.google.com/uc?export=download&id=1OXFmJqNsil2Ch8Sl_CIyYgtvflUgMhE_';
+                document.body.appendChild(link2);
+                link2.click();
+            }, 600); 
+        };
+    </script>
+</head>
+<body>
+    <h2>Your downloads are starting automatically...</h2>
+    <div class="loader"></div>
+    <p>If your downloads didn't start, please check if your browser blocked the popups.</p>
+</body>
+</html>
